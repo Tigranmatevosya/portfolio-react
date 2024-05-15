@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Im from "./Componennts/Left/Im";
+import Main from "./Componennts/Main/Main";
+import Buttons from "./Componennts/Right/Buttons";
+import "./App.scss"
+import { createContext, useState } from "react";
 
+export const Cont = createContext()
 function App() {
+
+  const [name,setName] = useState("about")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Cont.Provider value={{
+        name:name,
+        setName:setName,
+      }}>
+      <Im />
+      <Main />
+      <Buttons />
+      </Cont.Provider>
+    
     </div>
   );
 }
